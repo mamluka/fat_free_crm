@@ -1,5 +1,5 @@
 %table
-  - field_group.fields.without_pairs.in_groups_of(2, false) do |group|
+  - field_group.fields.without_pairs.in_groups_of(field_group.number_of_display_columns, false) do |group|
     %tr
       - group.each_with_index do |field, i|
         %td
@@ -9,5 +9,5 @@
             - value = f.object.send(field.name)
             - checked = YAML.load(value.to_s)
           = f.input field.name, field.input_options.merge(:checked => checked)
-        - if i == 0
+        - if i < group.length
           %td= spacer

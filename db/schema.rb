@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221033947) do
+ActiveRecord::Schema.define(:version => 20130926154308) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
@@ -197,14 +197,16 @@ ActiveRecord::Schema.define(:version => 20121221033947) do
   add_index "emails", ["mediator_id", "mediator_type"], :name => "index_emails_on_mediator_id_and_mediator_type"
 
   create_table "field_groups", :force => true do |t|
-    t.string   "name",       :limit => 64
-    t.string   "label",      :limit => 128
+    t.string   "name",                      :limit => 64
+    t.string   "label",                     :limit => 128
     t.integer  "position"
     t.string   "hint"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.integer  "tag_id"
-    t.string   "klass_name", :limit => 32
+    t.string   "klass_name",                :limit => 32
+    t.integer  "number_of_columns"
+    t.integer  "number_of_display_columns",                :default => 2
   end
 
   create_table "fields", :force => true do |t|

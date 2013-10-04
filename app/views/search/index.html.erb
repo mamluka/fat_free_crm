@@ -1,12 +1,4 @@
-<%= javascript_include_tag 'jquery.event.drag-2.2' %>
-<%= javascript_include_tag 'underscore-min' %>
-<%= javascript_include_tag 'drugs' %>
-<%= javascript_include_tag 'chosen.jquery' %>
-<%= javascript_include_tag 'slick.core' %>
-<%= javascript_include_tag 'slick.grid' %>
-
-<%= stylesheet_link_tag 'slick.grid' %>
-<%= stylesheet_link_tag 'chosen.min' %>
+<%= stylesheet_link_tag :search %>
 
 <select id="searchDrugs">
 </select>
@@ -38,9 +30,9 @@
         {id: "drug", name: "Drug", field: "drug", width: 250},
         {id: "drugForm", name: "Drug Form", field: "drugForm"},
         {id: "dosages", name: "Dosages", field: "dosages"},
-        {id: "patientAssistance", name: "Patient Assistance Program Name", field: "patientAssistance",width: 225},
-        {id: "manufacturer", name: "Manufacturer", field: "manufacturer",width: 170},
-        {id: "incomeRequirements", name: "Income Requirements", field: "incomeRequirements",width: 145},
+        {id: "patientAssistance", name: "Patient Assistance Program Name", field: "patientAssistance", width: 225},
+        {id: "manufacturer", name: "Manufacturer", field: "manufacturer", width: 170},
+        {id: "incomeRequirements", name: "Income Requirements", field: "incomeRequirements", width: 145},
         {id: "dEligible", name: "Medicaid Part D Eligible", field: "dEligible"},
         {id: "type", name: "Type", field: "type"}
     ];

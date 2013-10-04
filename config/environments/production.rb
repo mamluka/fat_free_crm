@@ -11,7 +11,7 @@ if defined?(FatFreeCRM::Application)
     config.cache_classes = true
 
     # Full error reports are enabled, since this is an internal application.
-    config.consider_all_requests_local       = true
+    config.consider_all_requests_local = true
     # Caching is turned on
     config.action_controller.perform_caching = true
 
@@ -51,7 +51,7 @@ if defined?(FatFreeCRM::Application)
 
     # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
     # config.assets.precompile += %w( search.js )
-    config.assets.precompile += ['print.css', 'jquery_ui_datepicker/*.js']
+    config.assets.precompile += ['print.css', 'jquery_ui_datepicker/*.js', 'search.js']
 
     # Enable threaded mode
     # config.threadsafe!

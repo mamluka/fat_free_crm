@@ -231,6 +231,10 @@
   :url:
     :controller: users
     :action: opportunities_overview
+- :active: false
+  :text: :tab_search_farma
+  :url:
+    :controller: search
 
 :admin_tabs:
 - :active: true

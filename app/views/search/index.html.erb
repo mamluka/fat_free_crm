@@ -1,0 +1,58 @@
+<%= javascript_include_tag 'jquery.event.drag-2.2' %>
+<%= javascript_include_tag 'underscore-min' %>
+<%= javascript_include_tag 'drugs' %>
+<%= javascript_include_tag 'chosen.jquery' %>
+<%= javascript_include_tag 'slick.core' %>
+<%= javascript_include_tag 'slick.grid' %>
+
+<%= stylesheet_link_tag 'slick.grid' %>
+<%= stylesheet_link_tag 'chosen.min' %>
+
+<select id="searchDrugs">
+</select>
+
+<div id="drugs-grid" style="width:1110px;height:500px;margin: 10px;border: 1px solid lightgray"></div>
+
+<script>
+    var grid;
+
+    jQuery.each(drugs_grid_data, function (i, n) {
+        jQuery('#searchDrugs').append(jQuery('<option>').val(n.drug).html(n.drug + ' -- ' + n.drugForm))
+    });
+
+    jQuery('#searchDrugs').chosen();
+
+    jQuery('#searchDrugs').chosen().change(function (e, data) {
+        var key = jQuery('#searchDrugs').val();
+
+        grid_data = _.filter(drugs_grid_data, function (data) {
+            return data.drug == key
+        });
+
+        grid.setData(grid_data);
+        grid.render();
+
+    });
+
+    var columns = [
+        {id: "drug", name: "Drug", field: "drug", width: 250},
+        {id: "drugForm", name: "Drug Form", field: "drugForm"},
+        {id: "dosages", name: "Dosages", field: "dosages"},
+        {id: "patientAssistance", name: "Patient Assistance Program Name", field: "patientAssistance",width: 225},
+        {id: "manufacturer", name: "Manufacturer", field: "manufacturer",width: 170},
+        {id: "incomeRequirements", name: "Income Requirements", field: "incomeRequirements",width: 145},
+        {id: "dEligible", name: "Medicaid Part D Eligible", field: "dEligible"},
+        {id: "type", name: "Type", field: "type"}
+    ];
+
+    var options = {
+        enableCellNavigation: true,
+        enableColumnReorder: false,
+        rowHeight: 50
+    };
+
+    jQuery(function () {
+        grid = new Slick.Grid("#drugs-grid", [], columns, options);
+    });
+
+</script>

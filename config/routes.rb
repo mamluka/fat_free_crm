@@ -9,35 +9,36 @@ Rails.application.routes.draw do
   root :to => 'home#index'
 
   match 'activities' => 'home#index'
-  match 'admin'      => 'admin/users#index',       :as => :admin
-  match 'login'      => 'authentications#new',     :as => :login
-  match 'logout'     => 'authentications#destroy', :as => :logout
-  match 'profile'    => 'users#show',              :as => :profile
-  match 'signup'     => 'users#new',               :as => :signup
+  match 'admin' => 'admin/users#index', :as => :admin
+  match 'login' => 'authentications#new', :as => :login
+  match 'logout' => 'authentications#destroy', :as => :logout
+  match 'profile' => 'users#show', :as => :profile
+  match 'signup' => 'users#new', :as => :signup
+  match 'search' => 'search#index', :as => :search
 
-  match '/home/options',  :as => :options
-  match '/home/toggle',   :as => :toggle
+  match '/home/options', :as => :options
+  match '/home/toggle', :as => :toggle
   match '/home/timeline', :as => :timeline
   match '/home/timezone', :as => :timezone
-  match '/home/redraw',   :as => :redraw
+  match '/home/redraw', :as => :redraw
 
-  resource  :authentication
+  resource :authentication
   resources :comments, :except => [:new, :show]
   resources :emails
   resources :passwords
 
   resources :accounts, :id => /\d+/ do
     collection do
-      get  :advanced_search
+      get :advanced_search
       post :filter
-      get  :options
-      get  :field_group
+      get :options
+      get :field_group
       match :auto_complete
       post :redraw
       get :versions
     end
     member do
-      put  :attach
+      put :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -48,16 +49,16 @@ Rails.application.routes.draw do
 
   resources :campaigns, :id => /\d+/ do
     collection do
-      get  :advanced_search
+      get :advanced_search
       post :filter
-      get  :options
-      get  :field_group
+      get :options
+      get :field_group
       post :auto_complete
       post :redraw
       get :versions
     end
     member do
-      put  :attach
+      put :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -68,16 +69,16 @@ Rails.application.routes.draw do
 
   resources :contacts, :id => /\d+/ do
     collection do
-      get  :advanced_search
+      get :advanced_search
       post :filter
-      get  :options
-      get  :field_group
+      get :options
+      get :field_group
       post :auto_complete
       post :redraw
       get :versions
     end
     member do
-      put  :attach
+      put :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -87,22 +88,22 @@ Rails.application.routes.draw do
 
   resources :leads, :id => /\d+/ do
     collection do
-      get  :advanced_search
+      get :advanced_search
       post :filter
-      get  :options
-      get  :field_group
+      get :options
+      get :field_group
       post :auto_complete
       post :redraw
       get :versions
     end
     member do
-      get  :convert
+      get :convert
       post :discard
       post :subscribe
       post :unsubscribe
-      put  :attach
-      put  :promote
-      put  :reject
+      put :attach
+      put :promote
+      put :reject
     end
 
     get :autocomplete_account_name, :on => :collection
@@ -110,16 +111,16 @@ Rails.application.routes.draw do
 
   resources :opportunities, :id => /\d+/ do
     collection do
-      get  :advanced_search
+      get :advanced_search
       post :filter
-      get  :options
-      get  :field_group
+      get :options
+      get :field_group
       post :auto_complete
       post :redraw
       get :versions
     end
     member do
-      put  :attach
+      put :attach
       post :discard
       post :subscribe
       post :unsubscribe

@@ -9,7 +9,12 @@
     var grid;
 
     jQuery.each(drugs_grid_data, function (i, n) {
-        jQuery('#searchDrugs').append(jQuery('<option>').val(n.drug).html(n.drug + ' -- ' + n.drugForm))
+
+        var text = n.drug
+        if (n.drugForm)
+            text += ' -- ' + n.drugForm;
+
+        jQuery('#searchDrugs').append(jQuery('<option>').val(n.drug).html(text))
     });
 
     jQuery('#searchDrugs').chosen();
